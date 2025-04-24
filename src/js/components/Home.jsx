@@ -1,22 +1,26 @@
 import React from "react";
 
 //include images into your bundle
-import Jumbotron from "./Jumbotron";
-import Navbar from "./Navbar";
-import CardRow from "./CardRow";
-import Footer from "./Footer";
+import SimpleCounter from "./SimpleCounter"
 
 
+const calculateSeconds = (aCounter, placeValue) => {
+return Math.floor(aCounter / placeValue) % 10;
+}
 
 //create your first component
-const Home = () => {
+const Home = (props) => {
 	return (
-		<div>
-	    <Navbar/>
-		<Jumbotron/>
-		<CardRow/>
-		<Footer />
-		</div>
+	
+		<>
+		<SimpleCounter 
+		thousandDigit = {calculateSeconds(props.counter,1000)}
+		hundredDigit = {calculateSeconds(props.counter,100)}
+		tenDigit = {calculateSeconds(props.counter,10)}
+		oneDigit = {calculateSeconds(props.counter,1)}
+		/>
+		</>
+		
 	)
 }
 
